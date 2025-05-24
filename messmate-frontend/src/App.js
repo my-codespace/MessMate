@@ -13,7 +13,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Initialize socket outside component to avoid multiple connections
-const socket = io('http://localhost:5000'); // Change to your backend URL in production
+const socket = io(`${process.env.REACT_APP_API_URL}`); // Change to your backend URL in production
 
 function App() {
   useEffect(() => {

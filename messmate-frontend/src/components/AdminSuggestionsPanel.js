@@ -7,7 +7,7 @@ export default function AdminSuggestionsPanel() {
 
   const fetchSuggestions = async () => {
     setLoading(true);
-    const res = await axios.get('http://localhost:5000/api/suggestions');
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/suggestions`);
     setSuggestions(res.data);
     setLoading(false);
   };
@@ -17,7 +17,7 @@ export default function AdminSuggestionsPanel() {
   }, []);
 
   const handleApprove = async (id) => {
-    await axios.post('http://localhost:5000/api/suggestions/approve', { id });
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/suggestions/approve`, { id });
     fetchSuggestions();
   };
 

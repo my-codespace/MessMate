@@ -10,7 +10,7 @@ export default function RatingStars({ meal }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/ratings', {
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/ratings`, {
       meal,
       rating,
       feedback,

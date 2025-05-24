@@ -7,7 +7,7 @@ export default function AISuggestionsPanel() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/ai/menu-suggestions')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/ai/menu-suggestions`)
       .then(res => {
         setSuggestions(res.data.suggestions || []);
         setFeedbacks(res.data.topFeedbacks || []);

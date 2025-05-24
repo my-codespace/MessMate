@@ -6,7 +6,7 @@ export default function WardenAnalyticsPanel() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/ratings')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/ratings`)
       .then(res => setRatings(res.data))
       .finally(() => setLoading(false));
   }, []);

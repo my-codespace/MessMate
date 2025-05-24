@@ -6,7 +6,7 @@ export default function MyRatingsPanel({ userId }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/ratings')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/ratings`)
       .then(res => {
         // Show only ratings by this user (if userId is provided)
         setRatings(userId ? res.data.filter(r => r.user_id === userId) : res.data);

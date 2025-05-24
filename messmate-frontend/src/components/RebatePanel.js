@@ -10,7 +10,7 @@ export default function RebatePanel({ userId }) {
   useEffect(() => {
     async function fetchRebates() {
       setLoading(true);
-      const res = await axios.get('http://localhost:5000/api/rebates');
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/rebates`);
       setRebates(res.data.filter(r => r.user_id === userId));
       setLoading(false);
     }
@@ -19,7 +19,7 @@ export default function RebatePanel({ userId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/rebates', {
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/rebates`, {
       user_id: userId,
       from_date: fromDate,
       to_date: toDate
@@ -29,7 +29,7 @@ export default function RebatePanel({ userId }) {
     // Fetch rebates again after submitting
     async function fetchRebates() {
       setLoading(true);
-      const res = await axios.get('http://localhost:5000/api/rebates');
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/rebates`);
       setRebates(res.data.filter(r => r.user_id === userId));
       setLoading(false);
     }

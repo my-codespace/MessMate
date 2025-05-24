@@ -7,7 +7,7 @@ export default function DishSuggestion({ userId }) {
   const [lastSuggestion, setLastSuggestion] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/suggestions')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/suggestions`)
       .then(res => {
         const mySuggestions = res.data.filter(s => s.user_id === userId);
         // Find the latest suggestion by this user
@@ -20,7 +20,7 @@ export default function DishSuggestion({ userId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/suggestions', { user_id: userId, dish });
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/suggestions`, { user_id: userId, dish });
     setSubmitted(true);
     setLastSuggestion({ dish });
   };

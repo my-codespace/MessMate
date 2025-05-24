@@ -10,7 +10,7 @@ export default function AdminInventoryPanel() {
 
   const fetchInventory = async () => {
     setLoading(true);
-    const res = await axios.get('http://localhost:5000/api/inventory');
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/inventory`);
     setItems(res.data);
     setLoading(false);
   };
@@ -21,7 +21,7 @@ export default function AdminInventoryPanel() {
 
   const handleAdd = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/inventory', { item, qty });
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/inventory`, { item, qty });
     setItem('');
     setQty('');
     fetchInventory();

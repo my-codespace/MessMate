@@ -8,7 +8,7 @@ export default function AdminNoticePanel() {
 
   const fetchNotices = async () => {
     setLoading(true);
-    const res = await axios.get('http://localhost:5000/api/notices');
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/notices`);
     setNotices(res.data);
     setLoading(false);
   };
@@ -20,7 +20,7 @@ export default function AdminNoticePanel() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!message.trim()) return;
-    await axios.post('http://localhost:5000/api/notices', { message });
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/notices`, { message });
     setMessage('');
     fetchNotices();
   };

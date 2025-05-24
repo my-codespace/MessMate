@@ -7,7 +7,7 @@ export default function AdminBillPanel() {
 
   const fetchBills = async () => {
     setLoading(true);
-    const res = await axios.get('http://localhost:5000/api/bills');
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/bills`);
     setBills(res.data);
     setLoading(false);
   };
@@ -17,7 +17,7 @@ export default function AdminBillPanel() {
   }, []);
 
   const handlePay = async (id) => {
-    await axios.post('http://localhost:5000/api/bills/pay', { id });
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/bills/pay`, { id });
     fetchBills();
   };
 

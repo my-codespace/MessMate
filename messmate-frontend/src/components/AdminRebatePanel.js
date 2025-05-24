@@ -7,7 +7,7 @@ export default function AdminRebatePanel() {
 
   const fetchRebates = async () => {
     setLoading(true);
-    const res = await axios.get('http://localhost:5000/api/rebates');
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/rebates`);
     setRebates(res.data);
     setLoading(false);
   };
@@ -17,7 +17,7 @@ export default function AdminRebatePanel() {
   }, []);
 
   const handleStatus = async (id, status) => {
-    await axios.post('http://localhost:5000/api/rebates/status', { id, status });
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/rebates/status`, { id, status });
     fetchRebates();
   };
 

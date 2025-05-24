@@ -6,7 +6,7 @@ export default function BillPanel({ userId }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/bills')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/bills`)
       .then(res => setBills(res.data.filter(b => b.user_id === userId)))
       .finally(() => setLoading(false));
   }, [userId]);

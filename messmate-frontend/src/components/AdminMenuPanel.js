@@ -10,7 +10,7 @@ export default function AdminMenuPanel() {
 
   const fetchMenu = async () => {
     setLoading(true);
-    const res = await axios.get('http://localhost:5000/api/menu/today');
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/menu/today`);
     setMenu(res.data);
     setLoading(false);
   };
@@ -21,7 +21,7 @@ export default function AdminMenuPanel() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/menu', {
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/menu`, {
       breakfast,
       lunch,
       dinner,

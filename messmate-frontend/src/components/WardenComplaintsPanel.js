@@ -7,14 +7,14 @@ export default function WardenComplaintsPanel() {
 
   useEffect(() => {
     // Assume /api/complaints returns all complaints
-    axios.get('http://localhost:5000/api/complaints')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/complaints`)
       .then(res => setComplaints(res.data))
       .finally(() => setLoading(false));
   }, []);
 
   const handleResolve = async (id) => {
-    await axios.post('http://localhost:5000/api/complaints/resolve', { id });
-    const res = await axios.get('http://localhost:5000/api/complaints');
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/complaints/resolve`, { id });
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/complaints`);
     setComplaints(res.data);
   };
 

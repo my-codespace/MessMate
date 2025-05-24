@@ -9,7 +9,7 @@ export default function AdminAnalyticsPanel() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/analytics/ratings')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/analytics/ratings`)
       .then(res => setAnalytics(res.data))
       .finally(() => setLoading(false));
   }, []);

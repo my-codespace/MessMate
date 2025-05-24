@@ -7,7 +7,7 @@ export default function DishVoting({ userId }) {
 
   useEffect(() => {
     // Assume admin-curated dishes are the approved ones
-    axios.get('http://localhost:5000/api/suggestions')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/suggestions`)
       .then(res => setDishes(res.data.filter(d => d.approved)));
   }, []);
 

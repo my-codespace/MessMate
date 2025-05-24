@@ -6,7 +6,7 @@ export default function NoticeList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/notices')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/notices`)
       .then(res => setNotices(res.data))
       .finally(() => setLoading(false));
   }, []);

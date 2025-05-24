@@ -6,7 +6,7 @@ export default function MenuCard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/menu/today')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/menu/today`)
       .then(res => setMenu(res.data))
       .finally(() => setLoading(false));
   }, []);

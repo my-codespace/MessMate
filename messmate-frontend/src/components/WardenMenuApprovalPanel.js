@@ -7,15 +7,15 @@ export default function WardenMenuApprovalPanel() {
 
   useEffect(() => {
     // Assume /api/menu/all returns all proposed menus (latest first)
-    axios.get('http://localhost:5000/api/menu/all')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/menu/all`)
       .then(res => setMenus(res.data))
       .finally(() => setLoading(false));
   }, []);
 
   const handleApprove = async (id) => {
-    await axios.post('http://localhost:5000/api/menu/approve', { id });
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/menu/approve`, { id });
     // Refresh list after approval
-    const res = await axios.get('http://localhost:5000/api/menu/all');
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/menu/all`);
     setMenus(res.data);
   };
 
